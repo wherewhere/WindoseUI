@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Windose.UI.SampleApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="#fff8ff"
+    mc:Ignorable="d">
+    <Grid
+        Margin="16"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        BorderBrush="#f7e0fb"
+        BorderThickness="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
+            Padding="16"
+            BorderBrush="#fef8ff"
+            BorderThickness="0,0,1,0">
+            <CheckBox
+                x:Name="IsEnableCheckBox"
+                VerticalContentAlignment="Center"
+                Content="IsEnabled"
+                FontFamily="{StaticResource WindoseContentControlThemeFontFamily}"
+                IsChecked="True" />
+        </Grid>
+        <StackPanel
+            Grid.Row="1"
+            Padding="16"
+            Background="#feefff"
+            Spacing="8">
+            <StackPanel Spacing="4">
+                <TextBlock FontFamily="{StaticResource WindoseContentControlThemeFontFamily}" Text="Button:" />
+                <StackPanel
+                    Background="#feefff"
+                    Orientation="Horizontal"
+                    Spacing="4">
+                    <Button
+                        Content="Test"
+                        IsEnabled="{Binding IsChecked, ElementName=IsEnableCheckBox}"
+                        Style="{StaticResource WindoseDefaultButtonStyle}" />
+                    <Button
+                        Content="Test"
+                        IsEnabled="{Binding IsChecked, ElementName=IsEnableCheckBox}"
+                        Style="{StaticResource WindoseAccentButtonStyle}" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

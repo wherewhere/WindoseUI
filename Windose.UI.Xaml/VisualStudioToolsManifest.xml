@@ -1,0 +1,8 @@
+<FileList>
+  <File Reference="Windose.UI.Xaml.dll">
+    <ToolboxItems UIFramework="UAP"
+        VSCategory="Windose UI"
+        BlendCategory="Windose UI">
+    </ToolboxItems>
+  </File>
+</FileList>

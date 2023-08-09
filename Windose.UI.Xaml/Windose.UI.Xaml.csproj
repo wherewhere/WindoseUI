@@ -1,0 +1,84 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>uap10.0</TargetFramework>
+    <TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Features>Strict</Features>
+    <LangVersion>7.3</LangVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Code CS8002 is a warning for strong named -> non-strong-named reference. This is valid for platforms other than .NET Framework (and is needed for the UWP targets. -->
+    <NoWarn>$(NoWarn);CS8002</NoWarn>
+    <!-- For including default @(Page) and @(Resource) items via 'MSBuild.Sdk.Extras' Sdk package. Also provides up to date check and file nesting -->
+    <ExtrasEnableDefaultXamlItems>true</ExtrasEnableDefaultXamlItems>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <EnableXBindDiagnostics>false</EnableXBindDiagnostics>
+    <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="VisualStudioToolsManifest.xml" Pack="True" PackagePath="tools" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="CommonStyles\Common.ThemeResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="XamlControlsResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);_IncludeDesignToolsInPackage</TargetsForTfmSpecificBuildOutput>
+    <IncludeDesignToolsBuildOutput Condition="'$(IncludeDesignToolsBuildOutput)' == ''">$(IncludeBuildOutput)</IncludeDesignToolsBuildOutput>
+  </PropertyGroup>
+
+  <Target Name="_IncludeDesignToolsInPackage" Condition="'$(IncludeDesignToolsBuildOutput)' != 'false'">
+    <!-- Add Build Outputs -->
+    <PropertyGroup>
+      <DesignToolsOutputPath Condition="'$(DesignToolsOutputPath)' == ''">$(OutputPath)Design</DesignToolsOutputPath>
+      <DesignToolsOutputPath Condition="!HasTrailingSlash('$(DesignToolsOutputPath)')">$(DesignToolsOutputPath)\</DesignToolsOutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <TfmSpecificBuildOutput Include="$(DesignToolsOutputPath)$(MSBuildProjectName).DesignTools.dll" PackagePath="Design" TargetFramework="$(TargetFramework)" />
+      <TfmSpecificBuildOutput Include="$(DesignToolsOutputPath)$(MSBuildProjectName).DesignTools.pdb" PackagePath="Design" TargetFramework="$(TargetFramework)" />
+    </ItemGroup>
+    <!-- Ensure that the files are present in the specified directory -->
+    <Error Code="WCTDEV01" Text="Design project build outputs not found in '$(DesignToolsOutputPath)' directory. Please check that you've set the output of the Design project(s) to the specified directory." Condition="!Exists('$(DesignToolsOutputPath)')" />
+    <Error Code="WCTDEV02" Text="The file '%(TfmSpecificBuildOutput.Filename)%(TfmSpecificBuildOutput.Extension)' does not exist in '%(TfmSpecificBuildOutput.RelativeDir)' directory." Condition="!Exists('%(TfmSpecificBuildOutput.FullPath)')" />
+    <!-- Set where the Build Outputs should go in the 'lib\<short-tfm>\' -->
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(TfmSpecificBuildOutput->'%(Filename)%(Extension)')">
+        <TargetPath>$([System.IO.Path]::Combine('%(PackagePath)', '%(Filename)%(Extension)'))</TargetPath>
+        <FinalOutputPath>%(FullPath)</FinalOutputPath>
+      </BuildOutputInPackage>
+    </ItemGroup>
+  </Target>
+
+  <!-- https://weblogs.asp.net/rweigelt/disable-warnings-in-generated-c-files-of-uwp-app -->
+  <Target Name="_DisableWarningsInGeneratedSources" AfterTargets="MarkupCompilePass2">
+    <ItemGroup>
+      <GeneratedSource Include="**\*.g.cs;**\*.g.i.cs" />
+    </ItemGroup>
+    <Message Text="GeneratedSource: @(GeneratedSource->'&quot;%(Identity)&quot;')" />
+    <Exec Command="for %%f in (@(GeneratedSource->'&quot;%(Identity)&quot;')) do echo #pragma warning disable &gt; %%f.temp &amp;&amp; type %%f &gt;&gt; %%f.temp &amp;&amp; move /y %%f.temp %%f &gt; NUL" />
+  </Target>
+
+</Project>
