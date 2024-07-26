@@ -1,11 +1,9 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
-            <!-- Colors -->
+            <!--  Colors  -->
             <Color x:Key="WindoseSystemAccentColor">#4E28CE</Color>
-            
+
             <Color x:Key="WindoseTextFillColorPrimary">#4E2C8E</Color>
             <Color x:Key="WindoseTextFillColorSecondary">#9E000000</Color>
             <Color x:Key="WindoseTextFillColorTertiary">#72000000</Color>
@@ -21,7 +19,7 @@
             <Color x:Key="WindoseControlBottomRightStrokeColorDefault">#805CDC</Color>
             <Color x:Key="WindoseControlBottomRightStrokeColorOnAccentDefault">#1C123E</Color>
 
-            <!-- Brushes -->
+            <!--  Brushes  -->
             <SolidColorBrush x:Key="WindoseTextFillColorPrimaryBrush" Color="{StaticResource WindoseTextFillColorPrimary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorSecondaryBrush" Color="{StaticResource WindoseTextFillColorSecondary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorTertiaryBrush" Color="{StaticResource WindoseTextFillColorTertiary}" />
@@ -39,14 +37,30 @@
 
             <SolidColorBrush x:Key="WindoseAccentFillColorDefaultBrush" Color="{ThemeResource WindoseSystemAccentColor}" />
 
-            <!-- Common -->
+            <!--  Common  -->
             <SolidColorBrush x:Key="SystemControlTransparentBrush" Color="Transparent" />
+            
+            <!-- Button -->
+            <StaticResource x:Key="WindoseAccentButtonBackground" ResourceKey="WindoseAccentFillColorDefaultBrush" />
+            <StaticResource x:Key="WindoseAccentButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="WindoseAccentButtonTopLeftBorderBrush" ResourceKey="WindoseControlTopLeftStrokeColorOnAccentDefaultBrush" />
+            <StaticResource x:Key="WindoseAccentButtonBottomRightBorderBrush" ResourceKey="WindoseControlBottomRightStrokeColorOnAccentDefaultBrush" />
+
+            <Thickness x:Key="WindoseButtonBorderThemeThickness">2</Thickness>
+
+            <StaticResource x:Key="WindoseButtonBackground" ResourceKey="WindoseControlFillColorDefaultBrush" />
+            <StaticResource x:Key="WindoseButtonBackgroundDisabled" ResourceKey="WindoseControlFillColorDisabledBrush" />
+            <StaticResource x:Key="WindoseButtonForeground" ResourceKey="WindoseTextFillColorPrimaryBrush" />
+            <StaticResource x:Key="WindoseButtonForegroundDisabled" ResourceKey="WindoseTextFillColorDisabledBrush" />
+            <StaticResource x:Key="WindoseButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="WindoseButtonTopLeftBorderBrush" ResourceKey="WindoseControlTopLeftStrokeColorDefault" />
+            <StaticResource x:Key="WindoseButtonBottomRightBorderBrush" ResourceKey="WindoseControlBottomRightStrokeColorDefault" />
         </ResourceDictionary>
-        
+
         <ResourceDictionary x:Key="Light">
-            <!-- Colors -->
+            <!--  Colors  -->
             <Color x:Key="WindoseSystemAccentColor">#4E28CE</Color>
-            
+
             <Color x:Key="WindoseTextFillColorPrimary">#4E2C8E</Color>
             <Color x:Key="WindoseTextFillColorSecondary">#9E000000</Color>
             <Color x:Key="WindoseTextFillColorTertiary">#72000000</Color>
@@ -62,15 +76,15 @@
             <Color x:Key="WindoseControlBottomRightStrokeColorDefault">#805CDC</Color>
             <Color x:Key="WindoseControlBottomRightStrokeColorOnAccentDefault">#1C123E</Color>
 
-            <!-- Brushes -->
+            <!--  Brushes  -->
             <Color x:Key="WindoseSystemAccentColorDark1">#4E28CE</Color>
-            
+
             <SolidColorBrush x:Key="WindoseTextFillColorPrimaryBrush" Color="{StaticResource WindoseTextFillColorPrimary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorSecondaryBrush" Color="{StaticResource WindoseTextFillColorSecondary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorTertiaryBrush" Color="{StaticResource WindoseTextFillColorTertiary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorDisabledBrush" Color="{StaticResource WindoseTextFillColorDisabled}" />
             <SolidColorBrush x:Key="WindoseTextFillColorInverseBrush" Color="{StaticResource WindoseTextFillColorInverse}" />
-            
+
             <SolidColorBrush x:Key="WindoseControlFillColorDefaultBrush" Color="{StaticResource WindoseControlFillColorDefault}" />
             <SolidColorBrush x:Key="WindoseControlFillColorDisabledBrush" Color="{StaticResource WindoseControlFillColorDisabled}" />
 
@@ -82,12 +96,28 @@
 
             <SolidColorBrush x:Key="WindoseAccentFillColorDefaultBrush" Color="{ThemeResource WindoseSystemAccentColor}" />
 
-            <!-- Common -->
+            <!--  Common  -->
             <SolidColorBrush x:Key="SystemControlTransparentBrush" Color="Transparent" />
+
+            <!-- Button -->
+            <StaticResource x:Key="WindoseAccentButtonBackground" ResourceKey="WindoseAccentFillColorDefaultBrush" />
+            <StaticResource x:Key="WindoseAccentButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="WindoseAccentButtonTopLeftBorderBrush" ResourceKey="WindoseControlTopLeftStrokeColorOnAccentDefaultBrush" />
+            <StaticResource x:Key="WindoseAccentButtonBottomRightBorderBrush" ResourceKey="WindoseControlBottomRightStrokeColorOnAccentDefaultBrush" />
+
+            <Thickness x:Key="WindoseButtonBorderThemeThickness">2</Thickness>
+
+            <StaticResource x:Key="WindoseButtonBackground" ResourceKey="WindoseControlFillColorDefaultBrush" />
+            <StaticResource x:Key="WindoseButtonBackgroundDisabled" ResourceKey="WindoseControlFillColorDisabledBrush" />
+            <StaticResource x:Key="WindoseButtonForeground" ResourceKey="WindoseTextFillColorPrimaryBrush" />
+            <StaticResource x:Key="WindoseButtonForegroundDisabled" ResourceKey="WindoseTextFillColorDisabledBrush" />
+            <StaticResource x:Key="WindoseButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="WindoseButtonTopLeftBorderBrush" ResourceKey="WindoseControlTopLeftStrokeColorDefault" />
+            <StaticResource x:Key="WindoseButtonBottomRightBorderBrush" ResourceKey="WindoseControlBottomRightStrokeColorDefault" />
         </ResourceDictionary>
-        
+
         <ResourceDictionary x:Key="HighContrast">
-            <!-- Colors -->
+            <!--  Colors  -->
             <Color x:Key="WindoseSystemAccentColor">#4E28CE</Color>
 
             <Color x:Key="WindoseTextFillColorPrimary">#4E2C8E</Color>
@@ -105,13 +135,13 @@
             <Color x:Key="WindoseControlBottomRightStrokeColorDefault">#805CDC</Color>
             <Color x:Key="WindoseControlBottomRightStrokeColorOnAccentDefault">#1C123E</Color>
 
-            <!-- Brushes -->
+            <!--  Brushes  -->
             <SolidColorBrush x:Key="WindoseTextFillColorPrimaryBrush" Color="{StaticResource WindoseTextFillColorPrimary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorSecondaryBrush" Color="{StaticResource WindoseTextFillColorSecondary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorTertiaryBrush" Color="{StaticResource WindoseTextFillColorTertiary}" />
             <SolidColorBrush x:Key="WindoseTextFillColorDisabledBrush" Color="{StaticResource WindoseTextFillColorDisabled}" />
             <SolidColorBrush x:Key="WindoseTextFillColorInverseBrush" Color="{StaticResource WindoseTextFillColorInverse}" />
-            
+
             <SolidColorBrush x:Key="WindoseControlFillColorDefaultBrush" Color="{StaticResource WindoseControlFillColorDefault}" />
             <SolidColorBrush x:Key="WindoseControlFillColorDisabledBrush" Color="{StaticResource WindoseControlFillColorDisabled}" />
 
@@ -123,8 +153,24 @@
 
             <SolidColorBrush x:Key="WindoseAccentFillColorDefaultBrush" Color="{ThemeResource WindoseSystemAccentColor}" />
 
-            <!-- Common -->
+            <!--  Common  -->
             <SolidColorBrush x:Key="SystemControlTransparentBrush" Color="Transparent" />
+
+            <!-- Button -->
+            <StaticResource x:Key="WindoseAccentButtonBackground" ResourceKey="WindoseAccentFillColorDefaultBrush" />
+            <StaticResource x:Key="WindoseAccentButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="WindoseAccentButtonTopLeftBorderBrush" ResourceKey="WindoseControlTopLeftStrokeColorOnAccentDefaultBrush" />
+            <StaticResource x:Key="WindoseAccentButtonBottomRightBorderBrush" ResourceKey="WindoseControlBottomRightStrokeColorOnAccentDefaultBrush" />
+
+            <Thickness x:Key="WindoseButtonBorderThemeThickness">2</Thickness>
+
+            <StaticResource x:Key="WindoseButtonBackground" ResourceKey="WindoseControlFillColorDefaultBrush" />
+            <StaticResource x:Key="WindoseButtonBackgroundDisabled" ResourceKey="WindoseControlFillColorDisabledBrush" />
+            <StaticResource x:Key="WindoseButtonForeground" ResourceKey="WindoseTextFillColorPrimaryBrush" />
+            <StaticResource x:Key="WindoseButtonForegroundDisabled" ResourceKey="WindoseTextFillColorDisabledBrush" />
+            <StaticResource x:Key="WindoseButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+            <StaticResource x:Key="WindoseButtonTopLeftBorderBrush" ResourceKey="WindoseControlTopLeftStrokeColorDefault" />
+            <StaticResource x:Key="WindoseButtonBottomRightBorderBrush" ResourceKey="WindoseControlBottomRightStrokeColorDefault" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
     <FontFamily x:Key="WindoseContentControlThemeFontFamily">DinkieBitmap 9px,XamlAutoFontFamily</FontFamily>

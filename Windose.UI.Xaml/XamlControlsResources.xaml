@@ -3,7 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ms-appx:///Windose.UI.Xaml/CommonStyles/Button.ThemeResources.xaml" />
         <ResourceDictionary Source="ms-appx:///Windose.UI.Xaml/CommonStyles/Common.ThemeResources.xaml" />
+        <ResourceDictionary Source="ms-appx:///Windose.UI.Xaml/CommonStyles/Button.ThemeResources.xaml" />
+        <ResourceDictionary Source="ms-appx:///Windose.UI.Xaml/Controls/ClassicBorder/ClassicBorder.ThemeResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

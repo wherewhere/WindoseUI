@@ -1,0 +1,53 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Windose.UI.Xaml.Controls"
+    xmlns:primitives="using:Windose.UI.Xaml.Controls.Primitives">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <primitives:ThicknessFilterConverter x:Key="TopLeftThicknessFilterConverter" Filter="Top,Left" />
+            <primitives:ThicknessFilterConverter x:Key="BottomRightThicknessFilterConverter" Filter="Bottom,Right" />
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="DefaultClassicBorderStyle" TargetType="controls:ClassicBorder">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ClassicBorder">
+                    <Grid x:Name="RootGrid">
+                        <Border
+                            x:Name="ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Child="{TemplateBinding Child}" />
+                        <Border
+                            x:Name="TopLeftBorder"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource TopLeftThicknessFilterConverter}}" />
+                        <Border
+                            x:Name="BottomRightBorder"
+                            BorderBrush="{TemplateBinding ShadowBorderBrush}"
+                            BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BottomRightThicknessFilterConverter}}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="BorderStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TopLeftBorder" Storyboard.TargetProperty="BorderThickness">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BottomRightThicknessFilterConverter}}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BottomRightBorder" Storyboard.TargetProperty="BorderThickness">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource TopLeftThicknessFilterConverter}}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

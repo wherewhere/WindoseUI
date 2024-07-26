@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>uap10.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
   </PropertyGroup>
 
@@ -31,18 +32,6 @@
 
   <ItemGroup>
     <None Include="VisualStudioToolsManifest.xml" Pack="True" PackagePath="tools" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="CommonStyles\Common.ThemeResources.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Styles\Button.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="XamlControlsResources.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
   <PropertyGroup>
